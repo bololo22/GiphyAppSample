@@ -29,8 +29,8 @@ class SearchGifViewModel (application: Application) : AndroidViewModel(applicati
     private val gifListMutableLiveData = MutableLiveData<List<ApiGif>?>()
     val gifListLiveData: LiveData<List<ApiGif>?> = gifListMutableLiveData
 
-    private val selectedGifMutableLiveData = MutableLiveData<ApiGif>()
-    val selectedGifLiveData: LiveData<ApiGif> = selectedGifMutableLiveData
+    private val selectedGifMutableLiveData = MutableLiveData<Event<ApiGif>>()
+    val selectedGifLiveData: LiveData<Event<ApiGif>> = selectedGifMutableLiveData
 
     private val selectedGifPaginationMutableLiveData = MutableLiveData<ApiPagination?>()
 
@@ -61,7 +61,7 @@ class SearchGifViewModel (application: Application) : AndroidViewModel(applicati
 
     @MainThread
     fun onGifSelected(apiGif: ApiGif) {
-        selectedGifMutableLiveData.value = apiGif
+        selectedGifMutableLiveData.value = Event(apiGif)
     }
 
     fun loadMore() {

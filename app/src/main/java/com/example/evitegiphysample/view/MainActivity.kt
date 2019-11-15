@@ -55,7 +55,7 @@ class MainActivity : AppCompatActivity() {
             if(it) supportActionBar?.hide() else supportActionBar?.show()
         })
 
-        searchGifViewModel.selectedGifLiveData.observe(this, Observer {
+        searchGifViewModel.selectedGifLiveData.observe(this, EventObserver {
             supportActionBar?.title = it.title
             this.findNavController(R.id.main_container).navigate(R.id.action_gifSearchFragment_to_gifDetailFragment)
             gifDetailViewModel.setSelectedGif(it)
