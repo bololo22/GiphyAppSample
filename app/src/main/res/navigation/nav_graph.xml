@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/gifSearchFragment">
+
+    <fragment
+        android:id="@+id/gifSearchFragment"
+        android:name="com.example.evitegiphysample.view.SearchGifFragment"
+        android:label="@string/search_gif_fragment_label"
+        tools:layout="@layout/search_gif_fragment">
+        <action
+            android:id="@+id/action_gifSearchFragment_to_gifDetailFragment"
+            app:destination="@id/gifDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/gifDetailFragment"
+        android:name="com.example.evitegiphysample.view.GifDetailFragment"
+        tools:layout="@layout/gif_detail_fragment"/>
+</navigation>
