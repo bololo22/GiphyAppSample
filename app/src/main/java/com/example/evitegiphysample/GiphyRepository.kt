@@ -10,8 +10,8 @@ object GiphyRepository {
         GiphyClient()
     var searchQuery = ""
 
-    suspend fun searchGif(offset: Long = 0): ApiGifResponse? = withContext(Dispatchers.Default) {
-        val gifResponse = client.searchGifs( searchQuery, offset = offset)
+    suspend fun searchGif(offset: Long = 0): ApiGifResponse? = withContext(Dispatchers.IO) {
+        val gifResponse = client.searchGifsAsync( searchQuery, offset = offset)
         return@withContext if (gifResponse.isSuccessful) {
             gifResponse.body()
         } else {
