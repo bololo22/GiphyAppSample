@@ -15,6 +15,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
+import kotlin.math.E
 
 class SearchGifViewModel (application: Application) : AndroidViewModel(application),
     CoroutineScope {
@@ -33,6 +34,24 @@ class SearchGifViewModel (application: Application) : AndroidViewModel(applicati
     val selectedGifLiveData: LiveData<Event<ApiGif>> = selectedGifMutableLiveData
 
     private val selectedGifPaginationMutableLiveData = MutableLiveData<ApiPagination?>()
+
+    private val exampleMutableLiveData = MutableLiveData<List<ExampleData>>()
+    val exampleLiveData : LiveData<List<ExampleData>> = exampleMutableLiveData
+
+    fun createMockData()  {
+        val list = listOf(
+        ExampleData("Evento 1", "Descripcion 1", 20.00),
+        ExampleData("Evento 2", "Descripcion 1", 20.00),
+        ExampleData("Evento 3", "Descripcion 1", 20.00),
+        ExampleData("Evento 4", "Descripcion 1", 20.00),
+        ExampleData("Evento 5", "Descripcion 1", 20.00),
+        ExampleData("Evento 6", "Descripcion 1", 20.00),
+        ExampleData("Evento 7", "Descripcion 1", 20.00),
+        ExampleData("Evento 8", "Descripcion 1", 20.00)
+        )
+
+        exampleMutableLiveData.postValue(list)
+    }
 
     @MainThread
     fun onSearchItemMenuClicked() {
@@ -83,3 +102,5 @@ class SearchGifViewModel (application: Application) : AndroidViewModel(applicati
 
     }
 }
+
+data class ExampleData(val title: String, val description: String, val price: Double)
